@@ -1,0 +1,83 @@
+/* Movies.css */
+
+/* Movie card container */
+.movie-card {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+  cursor: pointer;
+}
+
+/* Movie poster image */
+.movie-poster {
+  width: 200px; /* Adjust as needed */
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Hover effect for movie poster */
+.movie-poster:hover {
+  transform: scale(1.05);
+}
+
+/* Modal styles */
+.modal-content {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Modal title */
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+/* Modal body */
+.modal-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Modal image */
+.modal-img {
+  max-width: 300px;
+  max-height: 400px;
+  border-radius: 8px;
+  margin-right: 20px;
+}
+
+/* Modal overview */
+.modal-overview {
+  flex: 1;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Modal close button */
+.modal-footer .btn-secondary {
+  background-color: #333;
+  color: #fff;
+  border: none;
+}
+
+/* Responsive modal */
+@media (max-width: 768px) {
+  .modal-img {
+    max-width: 100%;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .modal-body {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .modal-overview {
+    margin-bottom: 20px;
+  }
+}
