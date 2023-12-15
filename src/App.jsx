@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Movies from './components/Movies'; 
+import MovieDetails from './components/MovieDetails'; // Assuming you have a MovieDetails component
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -24,25 +26,35 @@ function App() {
   };
 
   useEffect(() => {
-    fetchMovies(); // Fetch movies when the component mounts
-  }, []); // Empty dependency array ensures it runs only once on mount
+    fetchMovies();
+  }, []);
+
   return (
-    <div className="netflix-layout">
-      <header className="netflix-header">
-        <h1 className="netflix-title">Movie Gallery</h1>
-      </header>
-      <div className="netflix-movie-list">
-        {movies.map((movie) => (
-          <Movies
-            key={movie.id}
-            title={movie.title}
-            posterPath={movie.poster_path}
-            overview={movie.overview}
-            // Add other movie props here
-          />
-        ))}
+    <Router>
+      <div className="netflix-layout">
+        <header className="netflix-header">
+          {/* <h1 className="netflix-title">Movie Gallery</h1> */}
+        </header>
+        <Switch>
+          <Route exact path="/">
+            <div className="netflix-movie-list">
+              {movies.map((movie) => (
+                <Movies
+                  key={movie.id}
+                  title={movie.title}
+                  posterPath={movie.poster_path}
+                  overview={movie.overview}
+                  // Add other movie props here
+                />
+              ))}
+            </div>
+          </Route>
+          <Route path="/movies/:title">
+            <MovieDetails movies={movies} />
+          </Route>
+        </Switch>
       </div>
-    </div>
+    </Router>
   );
 }
 
